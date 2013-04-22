@@ -7,7 +7,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # require 'omniauth-facebook'
   # OpenSSL::SSL::SSLError (SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed):
-  # config.omniauth :facebook, '249003385244541', 'a3090ec3341f6f9213ac93e75e240b85'
+  config.omniauth :facebook, '249003385244541', 'a3090ec3341f6f9213ac93e75e240b85'
         # {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
   config.omniauth :twitter, "zcKN40JFXz5xNqzEfOVA", "pZzazBkewXLhVtpd8n1Efafj3aMAMgKdIVJF250lc"
 
