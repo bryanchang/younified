@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421212350) do
+ActiveRecord::Schema.define(:version => 20130422104344) do
+
+  create_table "providers", :force => true do |t|
+    t.string   "uid"
+    t.string   "token"
+    t.integer  "user_id"
+    t.string   "provider"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "token_secret"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -28,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20130421212350) do
     t.datetime "updated_at",                             :null => false
     t.string   "provider"
     t.string   "uid"
+    t.string   "fbtoken"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
