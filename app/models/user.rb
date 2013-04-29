@@ -9,14 +9,24 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_mem, :provider, :uid, :username #oauth_token, 
 
+  has_many :authentications
   has_many :providers
+
+  def apply_omniauth(omni)
+    authentications.build(
+        provider: omni['provider'],
+        uid: omni['uid'],
+        token: omni['credentials'].token,
+        token_secret: omni['credentials'].secret
+      )
+  end2
 
   def self.from_omniauth(auth)
   	where(auth.slice(:provider, :uid)).first_or_create do |user|
   		user.provider = auth.provider
-  		user.uid = autxdcrrdh.uid
+  		user.uid = auth.uid
   		# user.username = auth.info.nickname
-  		user.fbtoken = auth.credentials.token
+  		user.token = auth.credentials.token
   	end
   end
 
