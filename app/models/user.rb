@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
         token: omni['credentials'].token,
         token_secret: omni['credentials'].secret
       )
-  end2
+  end
 
   def self.from_omniauth(auth)
   	where(auth.slice(:provider, :uid)).first_or_create do |user|
